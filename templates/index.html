@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Flask-SocketIO Test</title>
+    
+</head>
+
+
+<body>
+
+    <h1>Flask-SocketIO Test</h1>
+ 
+    <h2>Send:</h2>
+    <form id="emit" method="POST" action='test_connect'>
+        <input type="text" name="emit_data" id="emit_data" placeholder="Message">
+        <input type="submit" value="Echo">
+    </form>
+    <p id='x1'>shoudao</p>
+ 
+    <button type="button" onclick="myFunction()">点击这里</button>    
+</body>
+<script type="text/javascript" src="//code.jquery.com/jquery-1.4.2.min.js"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
+<script type="text/javascript" charset="utf-8">
+
+
+//建立连接
+var websocket_url = 'http://' + document.domain + ':' + location.port + '/testnamespace';
+alert(websocket_url);
+var socket = io.connect(websocket_url);
+
+alert(socket);
+
+
+
+//从服务端接收消息
+
+socket.on('response',function(data){
+    alert(data.msg);
+    //x=document.getElementById("x1");  // 找到元素
+//x.innerHTML="Hello JavaScript!";    // 改变内容
+});
+
+
+
+
+//向服务端发送消息
+function myFunction()
+{
+//x=document.getElementById("x1");  // 找到元素
+//x.innerHTML="Hello JavaScript!";    // 改变内容
+//向服务端发送消息
+
+socket.emit('request_for_response',{'param':'春江花月夜'});
+
+};
+
+
+
+</script>
+
+
+</html>
