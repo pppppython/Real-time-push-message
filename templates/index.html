@@ -26,11 +26,11 @@
 
 
 //建立连接
-var websocket_url = 'http://' + document.domain + ':' + location.port + '/testnamespace';
-alert(websocket_url);
+var websocket_url = 'http://' + document.domain + ':' + location.port ;
+//var websocket_url = 'http://' + document.domain + ':' + location.port ;
 var socket = io.connect(websocket_url);
 
-alert(socket);
+
 
 
 
@@ -38,8 +38,8 @@ alert(socket);
 
 socket.on('response',function(data){
     alert(data.msg);
-    //x=document.getElementById("x1");  // 找到元素
-    //x.innerHTML="Hello JavaScript!";    // 改变内容
+    x=document.getElementById("x1");  // 找到元素
+    x.innerHTML=data.msg;    // 改变内容
 });
 
 

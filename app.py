@@ -14,10 +14,10 @@ def index():
 
 
 #接收前台消息，并广播出去
-@socketio.on('request_for_response',namespace='/testnamespace')
+@socketio.on('request_for_response')
 def give_response(data):
     value = data.get('param')
-    emit('response',{'code':'200','msg':'春江潮水连海平'})
+    emit('response',{'code':'200','msg':'春江潮水连海平'},broadcast=True)
 
 
 
